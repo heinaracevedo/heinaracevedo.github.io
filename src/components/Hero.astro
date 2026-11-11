@@ -1,0 +1,85 @@
+---
+import type { es } from '../i18n/es';
+
+interface Props {
+  t: typeof es;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="inicio" class="relative pt-10 pb-16 md:py-20 border-b border-[#1F2937] overflow-hidden">
+  <!-- Subtle technical grid background effect -->
+  <div class="absolute inset-0 bg-[radial-gradient(#1F2937_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none"></div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#1F2937] bg-[#111827] text-xs font-mono mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+        <span class="text-[#10B981] font-semibold">{t.hero.statusBadge}</span>
+        <span class="text-[#1F2937]">/</span>
+        <span class="text-[#CBD5E1] hidden sm:inline">{t.hero.availableStatus}</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight">
+        {t.hero.name}
+      </h1>
+
+      <div class="mt-2 text-lg sm:text-xl font-mono font-medium text-[#38BDF8]">
+        {t.hero.role}
+      </div>
+
+      <!-- Professional Summary -->
+      <p class="mt-5 text-base sm:text-lg text-[#CBD5E1] leading-relaxed max-w-2xl">
+        {t.hero.summary}
+      </p>
+
+      <!-- Location and Availability Badge -->
+      <div class="mt-4 flex items-center gap-2 text-xs font-mono text-[#94A3B8]">
+        <svg class="w-4 h-4 text-[#0284C7] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>{t.hero.locationBadge}</span>
+      </div>
+
+      <!-- Direct Action Buttons -->
+      <div class="mt-8 flex flex-wrap items-center gap-3.5">
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-[#0284C7] hover:bg-[#0369A1] text-white font-semibold text-sm transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8l-4 4z"></path>
+          </svg>
+          <span>{t.hero.ctaContact}</span>
+        </a>
+
+        <a
+          href="/CV-Heinar-Acevedo-Soporte-TI.pdf"
+          download="CV-Heinar-Acevedo-Soporte-TI.pdf"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-[#1F2937] bg-[#111827] hover:bg-[#162032] hover:border-[#38BDF8] text-[#F8FAFC] font-semibold text-sm transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
+        >
+          <svg class="w-4 h-4 text-[#38BDF8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>{t.hero.ctaCV}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="mt-12 pt-8 border-t border-[#1F2937] grid grid-cols-2 md:grid-cols-4 gap-4">
+      {t.hero.quickStats.map((stat) => (
+        <div class="p-4 rounded-lg border border-[#1F2937] bg-[#111827]">
+          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight">{stat.value}</div>
+          <div class="mt-1 text-xs font-mono text-[#94A3B8] uppercase tracking-wider">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

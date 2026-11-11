@@ -1,0 +1,164 @@
+---
+import type { es } from '../i18n/es';
+
+interface Props {
+  t: typeof es;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="ecosistema" class="py-16 md:py-20 border-b border-[#1F2937]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Section Header -->
+    <div class="max-w-3xl">
+      <div class="font-mono text-xs font-semibold text-[#0284C7] uppercase tracking-wider">{t.ecosystem.tag}</div>
+      <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight">{t.ecosystem.title}</h2>
+      <p class="mt-3 text-sm sm:text-base text-[#CBD5E1] leading-relaxed">{t.ecosystem.description}</p>
+    </div>
+
+    <!-- Technical Scope Callout -->
+    <div class="mt-6 p-4 rounded-lg border border-[#1F2937] bg-[#111827] flex items-start gap-3 text-xs text-[#94A3B8] font-mono">
+      <svg class="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span>{t.ecosystem.notice}</span>
+    </div>
+
+    <!-- Interactive Ecosystem Grid -->
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Devices List / Selector (Left Column) -->
+      <div class="lg:col-span-7 space-y-3">
+        <div class="font-mono text-xs text-[#94A3B8] uppercase tracking-wider font-semibold mb-2">
+          {t.ecosystem.devicesTitle}
+        </div>
+        
+        {t.ecosystem.devices.map((device, index) => (
+          <div
+            class="device-card p-4 rounded-lg border border-[#1F2937] bg-[#111827] hover:border-[#38BDF8] transition-all cursor-pointer group"
+            data-device-id={device.id}
+            data-index={index}
+            data-name={device.name}
+            data-category={device.category}
+            data-specs={device.specs}
+            data-details={device.details}
+            tabindex="0"
+            role="button"
+            aria-pressed={index === 0 ? "true" : "false"}
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded bg-[#0B0F17] border border-[#1F2937] text-[#38BDF8] font-mono text-xs font-bold flex items-center justify-center shrink-0 group-hover:border-[#0284C7] transition-colors">
+                  0{index + 1}
+                </span>
+                <div>
+                  <h3 class="text-sm font-bold text-[#F8FAFC] group-hover:text-[#38BDF8] transition-colors">{device.name}</h3>
+                  <div class="font-mono text-[11px] text-[#94A3B8]">{device.category}</div>
+                </div>
+              </div>
+              <span class="font-mono text-[11px] text-[#0284C7] group-hover:underline flex items-center gap-1">
+                Info
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+            </div>
+            
+            <div class="mt-2.5 pt-2.5 border-t border-[#1F2937]/60 text-xs font-mono text-[#CBD5E1]">
+              <span class="text-[#94A3B8]">Intervención: </span>{device.specs}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Detail & CAJAWI Core Panel (Right Column) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Active Device Inspector Panel -->
+        <div class="p-5 rounded-lg border border-[#38BDF8] bg-[#111827] shadow-sm">
+          <div class="flex items-center justify-between gap-2 border-b border-[#1F2937] pb-3">
+            <span class="font-mono text-[11px] text-[#10B981] font-semibold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+              PARÁMETROS TÉCNICOS
+            </span>
+            <span id="inspectorCategory" class="font-mono text-[11px] text-[#94A3B8]">
+              {t.ecosystem.devices[0].category}
+            </span>
+          </div>
+
+          <h4 id="inspectorName" class="mt-3 text-base font-bold text-[#F8FAFC]">
+            {t.ecosystem.devices[0].name}
+          </h4>
+
+          <div class="mt-2 font-mono text-xs text-[#38BDF8] bg-[#0B0F17] p-2.5 rounded border border-[#1F2937]">
+            <span id="inspectorSpecs">{t.ecosystem.devices[0].specs}</span>
+          </div>
+
+          <p id="inspectorDetails" class="mt-3 text-xs sm:text-sm text-[#CBD5E1] leading-relaxed">
+            {t.ecosystem.devices[0].details}
+          </p>
+        </div>
+
+        <!-- Software Core Card -->
+        <div class="p-5 rounded-lg border border-[#1F2937] bg-[#111827]">
+          <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#F59E0B]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="12" y2="18"></line>
+            </svg>
+            <span>{t.ecosystem.cajawiCard.title}</span>
+          </div>
+
+          <ul class="mt-4 space-y-2 text-xs text-[#CBD5E1]">
+            {t.ecosystem.cajawiCard.points.map((point) => (
+              <li class="flex items-start gap-2">
+                <span class="text-[#0284C7] font-mono mt-0.5 font-bold">›</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Raw devices injected for instant client inspection
+  const cards = document.querySelectorAll<HTMLElement>('.device-card');
+  const nameEl = document.getElementById('inspectorName');
+  const catEl = document.getElementById('inspectorCategory');
+  const specsEl = document.getElementById('inspectorSpecs');
+  const detailsEl = document.getElementById('inspectorDetails');
+
+  cards.forEach((card) => {
+    const activate = () => {
+      cards.forEach((c) => {
+        c.classList.remove('border-[#38BDF8]', 'bg-[#162032]');
+        c.classList.add('border-[#1F2937]', 'bg-[#111827]');
+        c.setAttribute('aria-pressed', 'false');
+      });
+
+      card.classList.remove('border-[#1F2937]', 'bg-[#111827]');
+      card.classList.add('border-[#38BDF8]', 'bg-[#162032]');
+      card.setAttribute('aria-pressed', 'true');
+
+      if (nameEl && card.dataset.name) nameEl.textContent = card.dataset.name;
+      if (catEl && card.dataset.category) catEl.textContent = card.dataset.category;
+      if (specsEl && card.dataset.specs) specsEl.textContent = card.dataset.specs;
+      if (detailsEl && card.dataset.details) detailsEl.textContent = card.dataset.details;
+    };
+
+    card.addEventListener('click', activate);
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+  });
+</script>
