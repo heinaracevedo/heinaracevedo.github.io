@@ -166,7 +166,7 @@ export const es = {
     tag: "TRAYECTORIA LABORAL CONFIRMADA",
     title: "Experiencia Profesional",
     role: "Líder de Proyecto",
-    company: "Se Come Sabroso en Aguascalientes, S.A. de C.V. · Bisquets Obregón (Grupo Zepeda)",
+    company: "Se Come Sabroso en Aguascalientes, S.A. de C.V. · Bisquets Obregón",
     period: "15 de junio de 2023 – 23 de octubre de 2026",
     location: "Unidad Terán, Tuxtla Gutiérrez, Chiapas",
     description: "Responsable de la continuidad operativa y técnica de la unidad comercial: soporte a equipos de cómputo, administración funcional del sistema CAJAWI, periféricos de cobro y comanda, y capacitación técnica a personal de nuevo ingreso.",
