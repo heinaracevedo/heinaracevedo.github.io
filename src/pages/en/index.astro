@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { en } from '../../i18n/en';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import PosEcosystem from '../../components/PosEcosystem.astro';
+import SkillsMatrix from '../../components/SkillsMatrix.astro';
+import CaseStudies from '../../components/CaseStudies.astro';
+import Experience from '../../components/Experience.astro';
+import ScopeDisclaimer from '../../components/ScopeDisclaimer.astro';
+import Certifications from '../../components/Certifications.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout lang="en" t={en}>
+  <Header t={en} lang="en" />
+  <main id="main-content">
+    <Hero t={en} />
+    <PosEcosystem t={en} />
+    <SkillsMatrix t={en} />
+    <CaseStudies t={en} lang="en" />
+    <Experience t={en} />
+    <ScopeDisclaimer t={en} />
+    <Certifications t={en} />
+    <Contact t={en} />
+  </main>
+  <Footer t={en.footer} />
+</Layout>

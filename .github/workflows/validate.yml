@@ -1,0 +1,34 @@
+name: Validate Technical Redesign
+
+on:
+  push:
+    branches:
+      - redesign
+  pull_request:
+    branches:
+      - main
+      - redesign
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --experimental-require-module
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Typecheck Astro and TypeScript
+        run: npx astro check
+
+      - name: Build Static Site
+        run: npm run build
